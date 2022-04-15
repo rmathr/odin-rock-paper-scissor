@@ -1,20 +1,36 @@
 let userChoice;
+let userValue;
 let userChoiceNumber;
-let userWins;
+let userWins = 0;
 let computerValue;
 let computerValueNumber;
-let computerWins;
+let computerWins = 0;
 let draws;
 
 
+const selectionButtons = btnContainer.querySelectorAll('button');
+selectionButtons.forEach(button => { 
+    button.addEventListener('click', () => {
+            userChoice = button.value;
+            getRoundWinner(userChoice, selectComputerValue);       
+        })        
+    });
 
-function getUserChoice(){
-    userChoice = prompt("Do you want to choose rock, paper or scissor?").toLowerCase();
-    while(userChoice != "rock" && userChoice != "paper" && userChoice != "scissor"){
-        userChoice = prompt("Please enter only rock, paper or scissor. Which one do you want?").toLowerCase();
-    }
-    return userChoice;
+function disableButtons() {
+    selectionButtons.forEach(button => {
+        button.disabled = true
+    })
 }
+
+
+const para = document.getElementById('resultText');
+const paraUserWins = document.getElementById('userWins');
+const paraComputerWins = document.getElementById('computerWins');
+
+
+paraUserWins.textContent = 0;
+paraComputerWins.textContent = 0;
+
 
 function selectComputerValue(){
     let computerValueNumber = Math.floor(Math.random()*3 +1);
@@ -25,35 +41,31 @@ function selectComputerValue(){
     return computerValue; 
 }
 
-function getRoundWinner(getUserChoice, selectComputerValue){
-    getUserChoice();
+function getRoundWinner(userValue, selectComputerValue){
+    userValue = userChoice;
     selectComputerValue();
-    if(userChoice == "rock" && computerValue == "scissor" || userChoice == "scissor" && computerValue == "paper" || userChoice == "paper" && computerValue == "rock"){
-        userWins++;
-        console.log(userWins);
-        console.log("Player won!");
-    } else if (userChoice == computerValue){
-        draws++;
-        console.log("It's a draw!");
-    } else {
-        computerWins++;
-        console.log("Computer won!");
-    }
-}
-
-function game(){
-    let rounds = 0;
-    userWins = 0;
-    computerWins = 0;
-    draws = 0; 
-    while (rounds < 5){
-        getRoundWinner(getUserChoice, selectComputerValue);
-        rounds++;
-    }
-    if (userWins > computerWins){
-        return "Player won the game!";
-     } else if (userWins < computerWins) {
-         return "Computer won the game!";
-    }
-    return "The game ended in a draw!";
-}
+     if (userValue == "rock" && computerValue == "scissor" || userValue == "scissor" && computerValue == "paper" || userValue == "paper" && computerValue == "rock"){
+            userWins++;
+            para.textContent = "Player Won!";
+            paraUserWins.textContent = `${userWins}`;
+            console.log("Player won!");
+            if(userWins == 5){
+                para.textContent = "Player won the game!";
+                disableButtons();   
+            }
+        } else if (userValue == computerValue){
+            draws++;
+            para.textContent = "It's a draw!";
+            console.log("It's a draw!");
+            return draws;
+        } else {
+            computerWins++;
+            para.textContent = "Computer won!";
+            paraComputerWins.textContent = `${computerWins}`;
+            console.log("Computer won!");
+            if (computerWins == 5){
+                para.textContent = "Computer won the game!";
+                disableButtons();  
+            }
+        }
+    }  
