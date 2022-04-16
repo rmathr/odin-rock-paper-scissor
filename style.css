@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    background-color: #eee;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 25px;
+    margin: 0 auto;
+    width: 97.1vw;
+    min-height: 250px;
+    height: auto;
+}
+
+.headerImg {
+    width: 280px;
+    height: auto;
+}
+
+.headerTitle {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.gameContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    height: 360px;
+    
+
+}
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#resultText {
+    margin: 24px;
+}
+
+.gameResults {
+    display: flex;
+    flex-direction: row;
+}
+
+.userResults, .computerResults{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 12px;
+    padding: 12px;
+    width: 90px;
+    height: 90px;
+    font-size: 24px;
+}
+
+#btnContainer button{
+    margin: 0 12px;
+    width: 96px;
+    height: 36px;
+    padding: 0px 8px;
+    border-radius: 5px;
+    border: 1px solid #969696;
+}
+
+.gameResults .fa-solid {
+    font-size: 36px;
+}
+
+.footer {
+    background-color: #575757;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+}
+
+.fa-github {
+    margin: 12px;
+    color: white;
+    font-size: 18px;
+}

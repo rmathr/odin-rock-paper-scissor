@@ -4,20 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
     <title>Document</title>
 </head>
 <body>
 
-<div id="btnContainer">
-    <button id="btn1" name="selection" value="rock">Rock</button>
-    <button id="btn2" name="selection" value="paper">Paper</button>
-    <button id="btn1" name="selection" value="scissor">Scissor</button>
-</div>    
+<section class="header">
+    <h1 class="headerTitle">Rock-Paper-Scissor-Lizard-Spock!</h1>
+    <img class="headerImg" src="./images/rock-paper-scissor-lizard-spock.png" alt="" srcset="">
+</section>
 
-<p id="resultText"></p>
-<p id="userWins"></p>
-<p id="computerWins"></p>
+<div class="gameContainer">
+    <div id="btnContainer">
+        <button id="btn1" name="selection" value="rock">Rock <i class="fa-solid fa-hand-back-fist"></i></button>
+        <button id="btn2" name="selection" value="paper">Paper <i class="fa-solid fa-hand"></i></button>
+        <button id="btn3" name="selection" value="scissor">Scissor <i class="fa-solid fa-hand-scissors"></i></button>
+        <button id="btn4" name="selection" value="lizard">Lizard <i class="fa-solid fa-hand-lizard"></i></i></button>
+        <button id="btn5" name="selection" value="spock">Spock <i class="fa-solid fa-hand-spock"></i></i></button>
+    </div>    
+    <div class="textContainer">
+        <p id="resultText"></p>
+        <div class="gameResults">
+            <div class="userResults">
+                <i class="fa-solid fa-person"></i>
+                <p id="userWins"></p>
+            </div>
+            <div class="computerResults">
+                <i class="fa-solid fa-desktop"></i>
+                <p id="computerWins"></p>
+            </div>  
+        </div>
+        
+    </div>
+    <div id="restartContainer">
+        <button id="restartButton">Restart</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>Matheus Rodrigues</p>
+    <a href="https://github.com/rmathr" class="fa-brands fa-github"></a>
+</footer>
+
+
 
 
 </body>

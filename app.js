@@ -8,6 +8,12 @@ let computerWins = 0;
 let draws;
 
 
+const para = document.getElementById('resultText');
+const paraUserWins = document.getElementById('userWins');
+const paraComputerWins = document.getElementById('computerWins');
+const restart = restartContainer.querySelector('button');
+
+
 const selectionButtons = btnContainer.querySelectorAll('button');
 selectionButtons.forEach(button => { 
     button.addEventListener('click', () => {
@@ -22,21 +28,35 @@ function disableButtons() {
     })
 }
 
+restart.addEventListener('click', restartGame);
 
-const para = document.getElementById('resultText');
-const paraUserWins = document.getElementById('userWins');
-const paraComputerWins = document.getElementById('computerWins');
+function restartGame(){
+        userWins = 0;
+        paraUserWins.textContent = `${userWins}`;
+        computerWins = 0;
+        paraComputerWins.textContent = `${computerWins}`;
+        para.textContent = "Select Rock, Paper, Scissor, Lizard or Spock to start playing!";
+        selectionButtons.forEach(button => {
+            if(button.disabled){
+                button.disabled = false;
+            };
+        }); 
+}
 
-
+para.textContent = "Select Rock, Paper, Scissor, Lizard or Spock to start playing!";
 paraUserWins.textContent = 0;
 paraComputerWins.textContent = 0;
 
 
+
+
 function selectComputerValue(){
-    let computerValueNumber = Math.floor(Math.random()*3 +1);
+    let computerValueNumber = Math.floor(Math.random()*5 +1);
     (computerValueNumber == 1) ? computerValue = "rock" : 
     (computerValueNumber == 2) ? computerValue = "paper" : 
-    computerValue = "scissor";
+    (computerValueNumber == 3) ? computerValue = "scissor" :
+    (computerValueNumber == 4) ? computerValue = "lizard" :
+    computerValue = "spock";
     
     return computerValue; 
 }
@@ -44,11 +64,15 @@ function selectComputerValue(){
 function getRoundWinner(userValue, selectComputerValue){
     userValue = userChoice;
     selectComputerValue();
-     if (userValue == "rock" && computerValue == "scissor" || userValue == "scissor" && computerValue == "paper" || userValue == "paper" && computerValue == "rock"){
+     if (userValue == "rock" && computerValue == "scissor" || userValue == "scissor" && computerValue == "paper" 
+     || userValue == "paper" && computerValue == "rock" || userValue == "rock" && computerValue == "lizard" 
+     || userValue == "scissor" && computerValue == "lizard" || userValue == "paper" && computerValue == "spock" 
+     || userValue == "lizard" && computerValue == "paper" || userValue == "lizard" && computerValue == "spock" 
+     || userValue == "spock" && computerValue == "rock" || userValue == "spock" && computerValue == "scissor"){
             userWins++;
             para.textContent = "Player Won!";
             paraUserWins.textContent = `${userWins}`;
-            console.log("Player won!");
+            console.log(`Player won!${userValue} beats ${computerValue}!`);
             if(userWins == 5){
                 para.textContent = "Player won the game!";
                 disableButtons();   
@@ -62,7 +86,7 @@ function getRoundWinner(userValue, selectComputerValue){
             computerWins++;
             para.textContent = "Computer won!";
             paraComputerWins.textContent = `${computerWins}`;
-            console.log("Computer won!");
+            console.log(`Computer won!${computerValue} beats ${userValue}!`);
             if (computerWins == 5){
                 para.textContent = "Computer won the game!";
                 disableButtons();  
